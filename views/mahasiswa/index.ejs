@@ -1,0 +1,65 @@
+<%- include('../partials/__head') %>
+    <div class="container">
+        <% if (messages.success) { %>
+            <div class="alert alert-info" role="alert">
+                <%- messages.success %>    
+            </div>
+        <% } %>
+        <% if (messages.error) { %>
+            <div class="alert alert-danger" role="alert">
+                <%- messages.error %>    
+            </div>
+        <% } %>
+        <div class="row">
+            <div class="col">
+                <a href="/mahasiswa/create" class="btn btn-sm btn-success">Tambah</a>
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">nrp</th>
+                        <th scope="col">nama depan</th>
+                        <th scope="col">nama belakang</th>
+                        <th scope="col">jenis kelamin</th>
+                        <th scope="col">agama</th>
+                        <th scope="col">umur</th>
+                        <th scope="col">tinggi badan</th>
+                        <th scope="col">gol. darah</th>
+                        <th scope="col">alamat</th>
+                        <th scope="col">hobi</th>
+                        <th scope="col">email</th>
+                        <th scope="col">no. telpon</th>
+                        <th scope="col">asal sekolah</th>
+                        <th scope="col">tahun lulus</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <% for( let i = 0; i < data.length; i++ ) { %>
+                            <tr>
+                              <th scope="row"><%= (i+1) %></th>
+                              <td><%= data[i].nrp %></td>
+                              <td><%= data[i].nama_depan %></td>
+                              <td><%= data[i].nama_belakang %></td>
+                              <td><%= data[i].jenis_kelamin %></td>
+                              <td><%= data[i].agama %></td>
+                              <td><%= data[i].umur %></td>
+                              <td><%= data[i].tinggi_badan %></td>
+                              <td><%= data[i].gol_darah %></td>
+                              <td><%= data[i].alamat %></td>
+                              <td><%= data[i].hobi %></td>
+                              <td><%= data[i].email %></td>
+                              <td><%= data[i].no_telepon %></td>
+                              <td><%= data[i].asal_sekolah %></td>
+                              <td><%= data[i].tahun_lulus %></td>
+                              <td>
+                                <a href="/mahasiswa/edit/<%= data[i].id_mahasiswa %>" class="btn btn-sm btn-warning">Edit</a>
+                                <a href="/mahasiswa/delete/<%= data[i].id_mahasiswa %>" class="btn btn-sm btn-danger">Delete</a>
+                              </td>
+                            </tr>
+                        <% } %>
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+    </div>
+    <%- include('../partials/__foot') %>

@@ -1,0 +1,45 @@
+<%- include('../partials/__head') %>
+    <div class="container">
+        <% if (messages.success) { %>
+            <div class="alert alert-info" role="alert">
+                <%- messages.success %>
+            </div>
+        <% } %> 
+
+        <% if (data.length > 0) { %>
+            <div class="row">
+                <div class="col">
+                    <a href="/produk/create" class="btn btn-sm btn-success">Tambah</a>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Id produk</th>
+                                <th scope="col">Nama Produk</th>
+                                <th scope="col">Harga Produk</th>
+                                <th scope="col">Id Kategori</th>
+                                <th scope="col">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% for(var i=0; i < data.length; i++) { %>
+                                <tr>
+                                    <th scope="row"><%= i + 1 %></th>
+                                    <td><%= data[i].id_produk %></td>
+                                    <td><%= data[i].nama_produk %></td>
+                                    <td><%= data[i].harga_produk %></td>
+                                    <td><%= data[i].id_kategori %></td>
+                                    <td>
+                                        <a href="/produk/edit/<%= data[i].id_produk %>" class="btn btn-sm btn-warning">Edit</a>
+                                        <a href="/produk/delete/<%= data[i].id_produk %>" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-sm btn-danger">Delete</a>
+                                    </td>
+                                </tr>
+                            <% } %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        <% } else { %>
+            <p>Tidak ada data yang tersedia.</p>
+        <% } %>
+    <%- include('../partials/__foot') %>
